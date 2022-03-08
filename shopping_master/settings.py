@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,104 +21,184 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2-!4&+^%cjg-r_o&yxxj46fv=0@(gm6or@16yi31f%2fm0b+4@'
+SECRET_KEY = "django-insecure-2-!4&+^%cjg-r_o&yxxj46fv=0@(gm6or@16yi31f%2fm0b+4@"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+ENVIRONMENT = os.environ.get("ENVIRONMENT")
+DEBUG = False if ENVIRONMENT else True
 
-ALLOWED_HOSTS = []
+# TODO Change this when deploying
+ALLOWED_HOSTS = ["*"]
 
+API_BASE_URL = os.getenv("API_BASE_URL") if os.getenv("API_BASE_URL") else "http://127.0.0.1:8000/"
+
+ROOT_APP = ["shopping_master"]
 
 # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+DJANGO_CORE_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
 ]
+
+THIRD_PARTY_APPS = ["rest_framework", "rest_framework_simplejwt"]
+
+if DEBUG:
+    THIRD_PARTY_APPS += ["django_extensions", "drf_spectacular"]
+
+SHOPPING_MASTER = ["accounts", "core_libs", "products", "utils"]
+
+INSTALLED_APPS = ROOT_APP + DJANGO_CORE_APPS + THIRD_PARTY_APPS + SHOPPING_MASTER
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'shopping_master.urls'
+ROOT_URLCONF = "shopping_master.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [os.path.join(BASE_DIR / "templates")],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'shopping_master.wsgi.application'
+# Fixtures Settings
+FIXTURE_DIRS = [os.path.join(BASE_DIR / "fixtures")]
 
-
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
+WSGI_APPLICATION = "shopping_master.wsgi.application"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
 
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework_simplejwt.authentication.JWTAuthentication",),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Shopping Master APIs",
+    "DESCRIPTION": "Shopping Master API on DRF",
+    "VERSION": "1.0.0",
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
 USE_TZ = True
 
+# JWT Token Settings
+ACCESS_TOKEN_LIFETIME = timedelta(hours=1)
+REFRESH_TOKEN_LIFETIME = timedelta(days=1)
+ROTATE_REFRESH_TOKENS = True
+BLACKLIST_AFTER_ROTATION = True
+
+if DEBUG:
+    ACCESS_TOKEN_LIFETIME = timedelta(days=10)
+    REFRESH_TOKEN_LIFETIME = timedelta(days=10)
+    ROTATE_REFRESH_TOKENS = False
+    BLACKLIST_AFTER_ROTATION = False
+
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": ACCESS_TOKEN_LIFETIME,
+    "REFRESH_TOKEN_LIFETIME": REFRESH_TOKEN_LIFETIME,
+    "ROTATE_REFRESH_TOKENS": ROTATE_REFRESH_TOKENS,
+    "BLACKLIST_AFTER_ROTATION": BLACKLIST_AFTER_ROTATION,
+    "ALGORITHM": "RS256",
+    "AUDIENCE": None,
+    "ISSUER": None,
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "USER_ID_FIELD": "id",
+    "USER_ID_CLAIM": "user_id",
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
+    "TOKEN_TYPE_CLAIM": "token_type",
+    "JTI_CLAIM": "jti",
+    "SIGNING_KEY": """-----BEGIN RSA PRIVATE KEY-----\nMIIJKAIBAAKCAgEAo5GIY/rQgI46IgTlosGzQtTb2vEroTeYDMRIJjBhkfEzdy22\nrMd2+1fy4aKGyQc4jrVxqA2BwP+IGXYzK3kPPn2As+CQr/7rEvv1KzsjhBdj8bgq\n5W1WTs3hzKC0flUblxqtzl24rHTrg5gVRvXHgkTjGpx0ogpNez9FK2m9B+HEKNml\nwKPxjU/tb6AnsdMyQUNZkZsGQc1HTvM0GXxcjOI6eeIu+QUHAZ4xVICidGA4ke4t\n1S8WQ+ZpZh3pbIVnCnpX0ZFBkt9h1z0gJFLDKnoryC3G4wq55QE3umKPnas7rYAf\n/qXn/2exzCp1wkcAJbihnAYo6fK4aeWrHMCIPNS/CN79kJgtew9s/vkYEzTZyDzA\n+CLwUGzhHuoRhl0Vj/5piBXcfzOHmQ3NqxfBz3Rmrpyo9JJeVMXWfbVl0w3l3Trx\nmubIcFuhXvHxS8UeRfbIQefVXg7vqex6cn7KqqpGL+3zRR7WDdYvomgqpXf6GIVq\nohusaf6/iHTemTx1/AnMusPSlxKgDHA0/lB88gLmxHEdu1qKr3+Xej2x8ggdrx9d\nlaQS9u3lghnfOndMpgvmvqfDQBQk0IBOl/TU5qqYQClPImsJANawbRFbTfVF3a9R\nR8tym1YoYRraUY5OrM0OUQ6CKdPF77I/vXUZgqc7N8cMjkfSJ9S1FldzDxcCAwEA\nAQKCAgAQAC2ScjexS7h+GXKJUF+D2yTCrzLwa2rRXOYd7j+tMiYxs2QaVMzb24ej\n8O00fyNWOoOqx994jMa4juqEhywplcdgUUh2Hv7J9aHPH9LimhMp0zVHCkIWJWfA\nR7xAW3z+dBqqhFqLbEiZr+fs8CAbKzf4I3P5Yf6gXtkaXRajzb8Nq/Td+munwjjc\n4ZLgf2N8JOV/K+YZy8X9ACeJkrPPCFZmE+06aPZ9fwceWBMMRVljVSRgpWGNNN38\nolJyTj59NOigVJBQmM+OaalaREpZPmhIBcpd7W+v6kWUUw3vg4+r8kuu8nXWc0Ne\nUI0Ce0WVaxFMHQIlmJvXqCLsBh2NhczaY4wRAUCKaqrGC7lYHns2rjyCqM24XskM\n+ApmNgky4f8iWwWnKHkPaqcZahfHwMxjjAOT00uQctcwnAUXrh9MQHpxtat5ub67\n85+fBbxurYP/K64H1UcyuyLevc2EM8VaJ80C+HKuqqDaSz7elo5yGeRSNaWb+wSU\nHa8m5gEqOcri324JfbrjGvA7XYXr9aw+DKGdcEtt5VQZV8bvgLAawFxY3Mbpzh47\nogfiGUkO0l4jUXeJvoeRlF6B4+nVAfw9tSGOSmpr6Dzp6h3JBrh1W4hRXV1BHkPP\ne1jtOzEWrCn51JSPGz8LMTako7Wd2C9SXJok/HYhDpNeZGfk+QKCAQEAzkO8DA8Q\n28z3547UFhaO1KrXufotQ12oA2T80cm3BDRJ4ng3YE9HRCunQuGILtCkRMo1CScf\n4m3W5pYt3hYxXPeaCftdTBkHtFzgbLoywAw3ecYRmLWnV9Mzz4njJo34I4LOGAIG\nbGPUfam6+0oQ02ym1KN05K+sBPG6GtqV/zKf/eeQZpry0IBzoUvSmZeyoVmk2PQD\n+wsU+aPFA+PCfafs3L7VdlGDpxr0tekL7/TXuFmj4hwWw3OVQ4kNFcJpdTddxBBH\nwjKikTgcon6h5e/7m1Sgfx9plioH341EEr+e82xfft/RQy8G0xZGMjSsDPw4HlyO\noyNVIFh6jOGYSwKCAQEAywJCtJDMRYT7ntDXh7UOBq8SolrIQ+e+ojXnWicOYaYE\n2n6UETGb1pfOWFa1475DKWBTEPdvYu+p0gIpI6G+EuIbv30zfz606drO2RaRW9K/\ntK+VTvTEXAbHPX/rHrnDIFtnYUvRgZ+9vu0hM7qcz8v9hEcSnyzqCPSdL4Sbux/P\nurXR+7+ccOhrGAL+hZvVnnp8j0WLsRVg6XYOmN7yGf0wQKjYLCrYio2ggc9IjqTo\nvnL2SmP9B1Ntoh0udBE25Yuz+vpGb3etlrKRZnLO8JGoQgA2JTUbU+b1eg6Jdv5t\nmHBPI1Midy/ovd2kXqLPQ1lKpzCYE7o5BT7mobT85QKCAQEAksveH27xfp0nqeMa\nygWP7YcRNUj5wcH7+z56OAwpdpKIKueH8cE6ZSf0SEMemsLexh5rFHKF3K5zjXRA\nfJiq1RFazdPZmHkP5KtdBcSWrduD9+ShTV+rE3Q6oW/u+9d6TDuh1bBLRgTei/iq\nHIGf6/id2yPh44erE3G+E7KRoigzeY6+VGfee8mPgbHm1m0CMpcMHWO9GYPPj8Og\nSZ5lIuzKRGiEn0pwOhOTKYwMdOB6TrdtTVTUVpICHyiA6YWNbGDVGN7FU06aKGQY\n7QTW0EC1ft0BxLdke/y50b5GPlmmFHSCmldMJVZosv5dQwn9kNhIUENrOGvC/9w4\ni99adQKCAQAh3cWtA77gFhg33VUnUX/+g3RTW1uvYFjADMgElSFkDuMeZCFlYOZD\nfV2yBP0g+huQKn6RBQYy9hJZc3zTcecYlVnVrxhJMPfTT2pUctxa+iR7CxOYcWLU\ni1jvnIhnvsubeUQcyh4wRqrL0BlK3OXOEJTBXW3w2fhM+CnExJWKOPtZhX17RvLd\nLxi2j8FQHrgbUQm4iPyN1SguqkAzJnYy+bb0AnbVn2wyaQAOx7qt+TrOkrUdoeKT\nN0rB0aZvPHPxBUZIJzpa3Bc8XZu+AIcfQN1V7V0bBeoCLDRlYUlzbWxxEsNQ/Exy\nn65vBiumkfiLnrjCfWvRVq6ufljRPzU1AoIBAEr2JB2Lb/F9MLyOBOSRvVcaCWH5\n+tdMXM7CL4Z/NM2nGn2Zdih+dCCTIZfR0OmnB2YRkpHowZ719s6mjGI1gAQERQrt\n9B5Yx/arkJaOPPpM0zWAcm6DLhVlUTLlf6DERsEWp7GrbMdg9Ph0fty8TNKREklp\noYz0xSLh/vGMYEjkKG6Z6Vye4MYSEwC+/LIIllyTiiZ1hW8t2vGvxlrtOyHO8Bhz\nJElYBh3fLlo4nT3izJzRgaa/CQYgmnvxo+J0TO5Q4+jkme5/82BKFgfq8yANwkxE\ngFNMf5hERogasIR4dEeGAZeZDDIk3At5i/ZO3pdzjDAezT6QM6aNwxO2eCg=\n-----END RSA PRIVATE KEY-----""",
+    "VERIFYING_KEY": """-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAo5GIY/rQgI46IgTlosGz\nQtTb2vEroTeYDMRIJjBhkfEzdy22rMd2+1fy4aKGyQc4jrVxqA2BwP+IGXYzK3kP\nPn2As+CQr/7rEvv1KzsjhBdj8bgq5W1WTs3hzKC0flUblxqtzl24rHTrg5gVRvXH\ngkTjGpx0ogpNez9FK2m9B+HEKNmlwKPxjU/tb6AnsdMyQUNZkZsGQc1HTvM0GXxc\njOI6eeIu+QUHAZ4xVICidGA4ke4t1S8WQ+ZpZh3pbIVnCnpX0ZFBkt9h1z0gJFLD\nKnoryC3G4wq55QE3umKPnas7rYAf/qXn/2exzCp1wkcAJbihnAYo6fK4aeWrHMCI\nPNS/CN79kJgtew9s/vkYEzTZyDzA+CLwUGzhHuoRhl0Vj/5piBXcfzOHmQ3NqxfB\nz3Rmrpyo9JJeVMXWfbVl0w3l3TrxmubIcFuhXvHxS8UeRfbIQefVXg7vqex6cn7K\nqqpGL+3zRR7WDdYvomgqpXf6GIVqohusaf6/iHTemTx1/AnMusPSlxKgDHA0/lB8\n8gLmxHEdu1qKr3+Xej2x8ggdrx9dlaQS9u3lghnfOndMpgvmvqfDQBQk0IBOl/TU\n5qqYQClPImsJANawbRFbTfVF3a9RR8tym1YoYRraUY5OrM0OUQ6CKdPF77I/vXUZ\ngqc7N8cMjkfSJ9S1FldzDxcCAwEAAQ==\n-----END PUBLIC KEY-----""",
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "static/"
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR / "static_root")
+
+AUTH_USER_MODEL = "accounts.User"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
+
+DEFAULT_USER_IMAGE_PATH = "accounts/images/default_user_icon.png"
+
+# ACCOUNT APPS VARIABLE
+ALLOWED_FILE_EXTENSION_FOR_IMAGE = [
+    "jpg",
+    "jpeg",
+    "png",
+    "svg",
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+if ENVIRONMENT == "PRODUCTION":
+    from ._settings.production import *
+elif ENVIRONMENT == "STAGING":
+    from ._settings.staging import *
+else:
+    from ._settings.development import *
+
+
+try:
+    from ._settings.local import *
+except ImportError:
+    pass
