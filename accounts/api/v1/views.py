@@ -24,7 +24,6 @@ User = get_user_model()
 
 
 class UserViewSet(ModelViewSet):
-
     serializer_class = UserModelSerializer
 
     def get_queryset(self) -> Response:
