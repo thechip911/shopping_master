@@ -1,0 +1,9 @@
+# Development Requirement
+
+# Import Base Requirement
+-r base.txt
+
+black==22.1.0
+drf-spectacular==0.21.2
+ipdb==0.13.9
+isort==5.10.1

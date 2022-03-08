@@ -1,0 +1,6 @@
+# Production Requirement
+
+# Import Base Requirement
+-r base.txt
+
+gunicorn==20.1.0
