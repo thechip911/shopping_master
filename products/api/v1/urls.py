@@ -8,7 +8,7 @@ from rest_framework import routers
 from rest_framework.urlpatterns import format_suffix_patterns
 
 # local imports
-from .views import ProductModelViewSet, ProductSizeModelViewSet, ProductCSVUploadViewSet
+from .views import ProductCSVUploadViewSet, ProductModelViewSet, ProductSizeModelViewSet
 
 router = routers.SimpleRouter(trailing_slash=False)
 

@@ -6,16 +6,16 @@
 from django.urls import path
 from rest_framework import routers
 from rest_framework.urlpatterns import format_suffix_patterns
-
 # local imports
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from accounts.api.v1.views import ResetPassword, UserViewSet, ProfileUpdateModelViewSet
+from accounts.api.v1.views import LoginWithOTPAPIView, ProfileUpdateModelViewSet, ResetPassword, UserViewSet
 
 router = routers.SimpleRouter(trailing_slash=False)
 
 router.register("user", UserViewSet, basename="user")  # User Signup and Login
-router.register("profile-update", ProfileUpdateModelViewSet, basename="profile-update")  # User Progile Update
+router.register("profile-update", ProfileUpdateModelViewSet, basename="profile-update")  # User Profile Update
+router.register("otp", LoginWithOTPAPIView, basename="otp")
 
 urlpatterns = [
     path("token", TokenObtainPairView.as_view(), name="token-obtain-pair"),  # Generate Token

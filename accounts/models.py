@@ -1,6 +1,7 @@
 import os
 import urllib
 
+import pyotp
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.core.validators import FileExtensionValidator
@@ -75,7 +76,6 @@ class CreatedUpdatedSoftDeleteMixin(SoftDeleteMixin):
 
 
 class User(AbstractBaseUser, PermissionsMixin, CreatedUpdatedSoftDeleteMixin):
-
     first_name = models.CharField(max_length=100, help_text=_("User's first name"))
     last_name = models.CharField(max_length=100, help_text=_("User's last name"))
     mobile_number = PhoneNumberField(unique=True, blank=True, null=True, help_text=_("User's Mobile Number"))
@@ -95,6 +95,7 @@ class User(AbstractBaseUser, PermissionsMixin, CreatedUpdatedSoftDeleteMixin):
         ],
         help_text=_("Profile Image for a User"),
     )
+    otp_secret_key = models.CharField(max_length=100, help_text=_("User's OTP Secret Key"), unique=True)
 
     objects = CustomUserManager()
 
@@ -111,12 +112,32 @@ class User(AbstractBaseUser, PermissionsMixin, CreatedUpdatedSoftDeleteMixin):
     def __str__(self):
         return f"{self.id} | {self.email}"
 
+    def otp_hex(self):
+        secret_otp_key = pyotp.random_base32(256)
+        return secret_otp_key
+
+    def save(self, *args, **kwargs):
+        self.otp_secret_key = self.otp_hex()
+        super(User, self).save(*args, **kwargs)
+
+    def otp(self, otp=None, validate=False, generate=False) -> bool or int:
+        """
+        Validate the one time password.
+        """
+        otp_secret_key = self.otp_secret_key
+        totp = pyotp.TOTP(otp_secret_key, interval=600)
+        if validate:
+            return totp.verify(otp)
+        if generate:
+            return totp.now()
+        return False
+
     @property
-    def name(self):
+    def name(self) -> str:
         return f"{self.first_name} {self.last_name}"
 
     @property
-    def get_profile_picture(self):
+    def get_profile_picture(self) -> str:
         if self.profile_picture and os.path.isfile(self.profile_picture.path):
             return self.profile_picture.url
         else:

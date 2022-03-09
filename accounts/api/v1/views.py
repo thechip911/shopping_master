@@ -9,13 +9,14 @@ from rest_framework.status import (
     HTTP_201_CREATED,
     HTTP_400_BAD_REQUEST,
     HTTP_403_FORBIDDEN,
-    HTTP_404_NOT_FOUND,
+    HTTP_404_NOT_FOUND
 )
+from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from accounts.api.v1.serializers import UserModelSerializer, ProfileUpdateModelSerializer
+from accounts.api.v1.serializers import ProfileUpdateModelSerializer, UserModelSerializer
 from core_libs.messages import ERROR_MESSAGES, MAIL_SUBJECTS, SUCCESS_MESSAGES
 from core_libs.template_names import PASSWORD_RESET_TEMPLATE
 from core_libs.utils import send_email
@@ -135,4 +136,35 @@ class ResetPassword(TokenObtainPairView):
         return Response(
             data={"data": ERROR_MESSAGES["USER_NOT_FOUND"]},
             status=HTTP_404_NOT_FOUND,
+        )
+
+
+class LoginWithOTPAPIView(ModelViewSet):
+    http_method_names = ["get", "post"]
+    serializer_class = UserModelSerializer
+
+    @action(detail=False, methods=["get"])
+    def generate(self, request, *args, **kwargs) -> Response:
+        user = request.user
+        if user.is_authenticated:
+            otp = user.otp(generate=True)
+            return Response(
+                data={"data": SUCCESS_MESSAGES["OTP_GENERATED"].format(otp)},
+                status=HTTP_200_OK,
+            )
+        return Response(
+            data={"data": ERROR_MESSAGES["USER_NOT_AUTHENTICATED"]},
+            status=HTTP_403_FORBIDDEN,
+        )
+
+    @action(detail=False, methods=["get"])
+    def validate(self, request) -> Response:
+        otp = request.GET.get("otp")
+        user = request.user
+        if user.is_authenticated and user.otp(validate=True, otp=otp):
+            user_detail = self.serializer_class(self.request.user, context={"request": request}).data
+            return Response(data={"data": user_detail}, status=HTTP_200_OK)
+        return Response(
+            data={"data": ERROR_MESSAGES["USER_NOT_AUTHENTICATED"]},
+            status=HTTP_403_FORBIDDEN,
         )
