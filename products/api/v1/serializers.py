@@ -13,13 +13,13 @@ class ProductModelSerializer(ModelSerializer):
     class Meta:
         model = Product
         fields = (
-            'id',
-            'name',
-            'price',
-            'discount_price',
-            'product_fabric',
-            'color',
-            'size',
-            'description',
-            'is_active'
+            "id",
+            "name",
+            "price",
+            "discount_price",
+            "product_fabric",
+            "color",
+            "size",
+            "description",
+            "is_active",
         )

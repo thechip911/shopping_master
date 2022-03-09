@@ -15,7 +15,7 @@ class ProductSize(CreatedUpdatedSoftDeleteMixin):
     class Meta:
         verbose_name = "Product Size"
         verbose_name_plural = "Product Sizes"
-        ordering = ['-id']
+        ordering = ["-id"]
 
 
 class Product(CreatedUpdatedSoftDeleteMixin):
@@ -45,4 +45,4 @@ class Product(CreatedUpdatedSoftDeleteMixin):
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Product"
-        ordering = ['-id']
+        ordering = ["-id"]

@@ -40,7 +40,7 @@ def filter_model_object(**kwargs: dict):
     This function is used to filter data from model
     kwargs should be first name, last name, email, username, password and user type
     """
-    model = kwargs.pop('model_name')  # get the model name
+    model = kwargs.pop("model_name")  # get the model name
     filter_object = model.objects.filter(**kwargs)
     return filter_object
 
@@ -66,7 +66,7 @@ def validate_field(fields: list, attrs: dict) -> dict:
     errors = {}
     for field in fields:
         if attrs.get(field) in EMPTY_VALUES:
-            errors.update({field: 'This field is required.'})
+            errors.update({field: "This field is required."})
     return errors
 
 
@@ -98,28 +98,23 @@ def read_csv_data(write_line, csv_data):
         errors = validate_field(ROW_FIELD_LIST, row)
         if errors:
             # if any field not exists then
-            failed_count = row_append(
-                data_row, False, failed_count
-            )
+            failed_count = row_append(data_row, False, failed_count)
         else:
             try:
                 is_active = True if row_dict.pop("is_active").lower() == "true" else False
-                sizes = [ProductSize.objects.filter(symbol__iexact=i).first().id for i in
-                         row_dict.pop("size").split(',')]
+                sizes = [
+                    ProductSize.objects.filter(symbol__iexact=i).first().id for i in row_dict.pop("size").split(",")
+                ]
 
                 # create record
                 product_obj = Product.objects.update_or_create(**row_dict)
                 product_obj.sizes.set(sizes)
                 product_obj.is_active = is_active
                 product_obj.save()
-                success_count = row_append(
-                    data_row, True, success_count
-                )
+                success_count = row_append(data_row, True, success_count)
             except:
                 # if record did not create then
-                failed_count = row_append(
-                    data_row, False, failed_count
-                )
+                failed_count = row_append(data_row, False, failed_count)
         # add row to new file of success status of record
         write_line.writerow(data_row)
     return failed_count, success_count
