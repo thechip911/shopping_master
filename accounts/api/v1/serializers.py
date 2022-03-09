@@ -38,3 +38,18 @@ class UserModelSerializer(UserSignupFields, PasswordValidators):
         instance = super(UserModelSerializer, self).update(instance, validated_data)
         self.create_update_password(instance, validated_data)
         return instance
+
+
+class ProfileUpdateModelSerializer(UserSignupFields, PasswordValidators):
+    def __init__(self, *args, **kwargs) -> None:
+        request = kwargs.get("context")["request"]
+        self.FIELD_NAMES = UserSignupFields.BASE_FIELDS
+        self.meta_obj.model = self.MODEL_CLASS
+        self.meta_obj.fields = self.FIELD_NAMES
+        self.meta_obj.extra_kwargs = self.EXTRA_KWARGS
+        super().__init__(*args, **kwargs)
+
+    def to_representation(self, instance) -> str:
+        data = super(ProfileUpdateModelSerializer, self).to_representation(instance)
+        data["profile_picture"] = instance.get_profile_picture
+        return data

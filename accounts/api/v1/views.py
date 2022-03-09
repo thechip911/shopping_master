@@ -15,7 +15,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from accounts.api.v1.serializers import UserModelSerializer
+from accounts.api.v1.serializers import UserModelSerializer, ProfileUpdateModelSerializer
 from core_libs.messages import ERROR_MESSAGES, MAIL_SUBJECTS, SUCCESS_MESSAGES
 from core_libs.template_names import PASSWORD_RESET_TEMPLATE
 from core_libs.utils import send_email
@@ -92,6 +92,17 @@ class UserViewSet(ModelViewSet):
             data={"data": ERROR_MESSAGES["USER_NOT_AUTHENTICATED"]},
             status=HTTP_403_FORBIDDEN,
         )
+
+
+class ProfileUpdateModelViewSet(ModelViewSet):
+    serializer_class = ProfileUpdateModelSerializer
+    http_method_names = ["patch", "delete"]
+
+    def get_queryset(self) -> Response:
+        queryset = User.objects.none()
+        if self.request.user.is_authenticated:
+            queryset = User.objects.filter(id=self.request.user.id)
+        return queryset
 
 
 class ResetPassword(TokenObtainPairView):

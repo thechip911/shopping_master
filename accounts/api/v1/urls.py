@@ -10,11 +10,12 @@ from rest_framework.urlpatterns import format_suffix_patterns
 # local imports
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from accounts.api.v1.views import ResetPassword, UserViewSet
+from accounts.api.v1.views import ResetPassword, UserViewSet, ProfileUpdateModelViewSet
 
 router = routers.SimpleRouter(trailing_slash=False)
 
 router.register("user", UserViewSet, basename="user")  # User Signup and Login
+router.register("profile-update", ProfileUpdateModelViewSet, basename="profile-update")  # User Progile Update
 
 urlpatterns = [
     path("token", TokenObtainPairView.as_view(), name="token-obtain-pair"),  # Generate Token
