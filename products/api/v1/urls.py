@@ -13,7 +13,7 @@ from .views import ProductModelViewSet, ProductSizeModelViewSet, ProductCSVUploa
 router = routers.SimpleRouter(trailing_slash=False)
 
 router.register("product", ProductModelViewSet, basename="product")  # Product CRUD
-# router.register("product-size", ProductSizeModelViewSet, basename="product_size")  # ProductSize CRUD
+router.register("product-size", ProductSizeModelViewSet, basename="product_size")  # ProductSize CRUD
 
 urlpatterns = [
     path("upload", ProductCSVUploadViewSet.as_view(), name="upload-csv"),
