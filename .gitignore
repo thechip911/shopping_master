@@ -384,6 +384,7 @@ Temporary Items
 # Translations
 
 # Django stuff:
+static_root/
 
 # Flask stuff:
 
