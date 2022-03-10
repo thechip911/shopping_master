@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "1b4d4f4d-5cb1-458b-ba24-65e18f2f8e1d",
+		"name": "Profile Update",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Delete Profile",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ3NzAzMTM2LCJpYXQiOjE2NDY4MzkxMzYsImp0aSI6ImU4ODY4OGI0YmUyZDRiZTc4NGU2ZDBlMzFlOGZkYmNhIiwidXNlcl9pZCI6NH0.PbTGpAtSmVeWBacPqSh7wzH5Syy69oMfeRBSwoV4e_U1SKg2RVPAe3_XFNn1dY1DrRwKn_3a82HOYH-wEefUjjsKgs_BR-E4e_r_ePSoVj3JWsb6R4BKFgHXuMCsC_SiRtme8Cmm6wGTwkd3mhLnhotcDhcxTX3Izl0IAqokeghflk-bpH6TiVGjgwA-wiCQfJJfHaAvJLbhGMIzpqgsSIBGE7Omec97hhkOHmHb8sVOI8PouP9D2Tuzb8-1ls1PlEidBBF5qqtf_GiE4nYZ6mVQDPjqdYgAwrLcs4EuUY4bSC46_Q-Jxo6kDH7zy_JaaJTswPa-HRAHUqthllvCfEF1MRyUfBafks48Bo4WgAfaUXcIjC1fge0ZkjTWTXRxgGxGdd8Qsxy6ddNiIF4yB9OyO8L0V6DWr3su6jRCmZqNWyxmacg8m8j6zfKkmlMvz-YKCpmuL-dGX1CEu5OxHJ__AnSfDoIFoFjZhWP5FPw99ZZEC3j5C70CvPHLEATA-3Yh77i5b8MUlQNZQ5JCrRBeVpABwjnlRAqTIQeT5zF-qY9ykMi_CQAMyDAEh69VXjyOliqcZcP8iDo-LjlWIL1gOZcslA1tqK_JZooRPDM9ykLSKP2YZIRFsBnQYXBvErjNT7_S-Lx-fyx2O1AY9F_78UmytN59rS1mzihoyh4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\":\"The\",\n    \"last_name\":\"Chip\",\n    \"mobile_number\":\"+919977661166\",\n    \"email\":\"thechip911@gmail.com\",\n    \"password\":\"aloksharma\",\n    \"confirm_password\":\"aloksharma\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/accounts/api/v1/profile-update/4",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"api",
+						"v1",
+						"profile-update",
+						"4"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Profile",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ3NzAzMTM2LCJpYXQiOjE2NDY4MzkxMzYsImp0aSI6ImU4ODY4OGI0YmUyZDRiZTc4NGU2ZDBlMzFlOGZkYmNhIiwidXNlcl9pZCI6NH0.PbTGpAtSmVeWBacPqSh7wzH5Syy69oMfeRBSwoV4e_U1SKg2RVPAe3_XFNn1dY1DrRwKn_3a82HOYH-wEefUjjsKgs_BR-E4e_r_ePSoVj3JWsb6R4BKFgHXuMCsC_SiRtme8Cmm6wGTwkd3mhLnhotcDhcxTX3Izl0IAqokeghflk-bpH6TiVGjgwA-wiCQfJJfHaAvJLbhGMIzpqgsSIBGE7Omec97hhkOHmHb8sVOI8PouP9D2Tuzb8-1ls1PlEidBBF5qqtf_GiE4nYZ6mVQDPjqdYgAwrLcs4EuUY4bSC46_Q-Jxo6kDH7zy_JaaJTswPa-HRAHUqthllvCfEF1MRyUfBafks48Bo4WgAfaUXcIjC1fge0ZkjTWTXRxgGxGdd8Qsxy6ddNiIF4yB9OyO8L0V6DWr3su6jRCmZqNWyxmacg8m8j6zfKkmlMvz-YKCpmuL-dGX1CEu5OxHJ__AnSfDoIFoFjZhWP5FPw99ZZEC3j5C70CvPHLEATA-3Yh77i5b8MUlQNZQ5JCrRBeVpABwjnlRAqTIQeT5zF-qY9ykMi_CQAMyDAEh69VXjyOliqcZcP8iDo-LjlWIL1gOZcslA1tqK_JZooRPDM9ykLSKP2YZIRFsBnQYXBvErjNT7_S-Lx-fyx2O1AY9F_78UmytN59rS1mzihoyh4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\":\"The\",\n    \"last_name\":\"Chip\",\n    \"mobile_number\":\"+919977661166\",\n    \"email\":\"thechip911@gmail.com\",\n    \"password\":\"aloksharma\",\n    \"confirm_password\":\"aloksharma\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/accounts/api/v1/profile-update/4",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"api",
+								"v1",
+								"profile-update",
+								"4"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 09 Mar 2022 15:19:08 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "PATCH, DELETE"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Update Profile",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ3NzAzMTkxLCJpYXQiOjE2NDY4MzkxOTEsImp0aSI6IjNkZTk3YTBkMGJkMzQ3MWU4YWU2Y2RlNDczNzgzZTM0IiwidXNlcl9pZCI6NX0.Ow_I77ic4xi85MtjmmbvjnCPkdB-e-pXUwlJlIvz4v8zPw3e-_f3AM-aqRpbDvfnylCc_Pea2otJeXxpBqphai5hJ1BHWy5WlU2MiXV9MEcwm2eRmjbZoSWGF0bWeQvk-lVyqB1qped0wvo1gz-r3Z-FlYbdHcOO286ABCLntww-FZFulBOba-gVbsjUze4tYQ2qsPpvtlv8JoGcevhZF5vjldeRFmSve6FQUYkBdN0i4GqAqqgI0uLOZKARICRsv_lGIoVJj6RBm8CshdHHnQ2zvEdqqbLlNv1yFAWW73BBJfbNw88ALktxiDhx-x1_OTVO6vUdJcg7HHZWoqJ2IK4_Cl2n1N3aJjsENUZ2C2Jnh2xTy889jwpw2ns7Cm16UuR5S9TQzERHmMj4J90euUcjVRk2j6B4WjjUfLmECMoJfgzGJrSYuyZtdeg-eXZb26UL5sam21wIVvSvNsh2lQIfK4jDcidj2EBQjAOm2BXkauARYN_XoKNkb5zRjkwTEldlK7qLMh-P7BjUoKdXjMUZQDnAVty4z23FtQ_7bYLPgIhl_C9VrZ0sK4AFD1cj95u4PHVj72_19kGCJ55OPX_tl4rK2uHmOvjWBjOMi38i0odJCFiwRMTy2jxX-9DCvKfGDi7i78fCzkZB85NYLzXvDhOoAYZi_5v_S4XvN6o",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\":\"TheChip\",\n    \"last_name\":\"SurnameChip\",\n    \"mobile_number\":\"+919977631166\",\n    \"email\":\"thechip911@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/accounts/api/v1/profile-update/5",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"api",
+						"v1",
+						"profile-update",
+						"5"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Profile",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ3NzAzMTkxLCJpYXQiOjE2NDY4MzkxOTEsImp0aSI6IjNkZTk3YTBkMGJkMzQ3MWU4YWU2Y2RlNDczNzgzZTM0IiwidXNlcl9pZCI6NX0.Ow_I77ic4xi85MtjmmbvjnCPkdB-e-pXUwlJlIvz4v8zPw3e-_f3AM-aqRpbDvfnylCc_Pea2otJeXxpBqphai5hJ1BHWy5WlU2MiXV9MEcwm2eRmjbZoSWGF0bWeQvk-lVyqB1qped0wvo1gz-r3Z-FlYbdHcOO286ABCLntww-FZFulBOba-gVbsjUze4tYQ2qsPpvtlv8JoGcevhZF5vjldeRFmSve6FQUYkBdN0i4GqAqqgI0uLOZKARICRsv_lGIoVJj6RBm8CshdHHnQ2zvEdqqbLlNv1yFAWW73BBJfbNw88ALktxiDhx-x1_OTVO6vUdJcg7HHZWoqJ2IK4_Cl2n1N3aJjsENUZ2C2Jnh2xTy889jwpw2ns7Cm16UuR5S9TQzERHmMj4J90euUcjVRk2j6B4WjjUfLmECMoJfgzGJrSYuyZtdeg-eXZb26UL5sam21wIVvSvNsh2lQIfK4jDcidj2EBQjAOm2BXkauARYN_XoKNkb5zRjkwTEldlK7qLMh-P7BjUoKdXjMUZQDnAVty4z23FtQ_7bYLPgIhl_C9VrZ0sK4AFD1cj95u4PHVj72_19kGCJ55OPX_tl4rK2uHmOvjWBjOMi38i0odJCFiwRMTy2jxX-9DCvKfGDi7i78fCzkZB85NYLzXvDhOoAYZi_5v_S4XvN6o",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\":\"TheChip\",\n    \"last_name\":\"SurnameChip\",\n    \"mobile_number\":\"+919977631166\",\n    \"email\":\"thechip911@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/accounts/api/v1/profile-update/5",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"api",
+								"v1",
+								"profile-update",
+								"5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 09 Mar 2022 15:22:52 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "PATCH, DELETE"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "236"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 5,\n    \"name\": \"TheChip SurnameChip\",\n    \"first_name\": \"TheChip\",\n    \"last_name\": \"SurnameChip\",\n    \"mobile_number\": \"+919977631166\",\n    \"email\": \"thechip911@gmail.com\",\n    \"profile_picture\": \"http://127.0.0.1:8000/static/accounts/images/default_user_icon.png\"\n}"
+				}
+			]
+		}
+	]
+}

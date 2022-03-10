@@ -1,0 +1,922 @@
+{
+	"info": {
+		"_postman_id": "9cb5ebda-9c58-48ba-93b9-de8bd7692077",
+		"name": "Accounts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. SignUP",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQwNTIxMTE5LCJpYXQiOjE2NDA1MTc1MTksImp0aSI6IjQ0YTc5NDIxZDQ1YjQ1NGQ5NTNkMGRjNTVmYjg2NzY3IiwidXNlcl9pZCI6MX0.bkKtB9gH4VPZWNXVEFUlSYRd_WZpvUuc77hRfw8ScSDOaPtm7i60QlHAOIhNqCbN_DWnJzEqtVMCRyeXCdmXYWE3CtLL9Lb6BDL7_knj7O5tBCPuNDKp_BdsMNq0oe0wDaoAsaArZsdGzw9y6XrxGBbAVFEbnhl7HsniTNH7dxsFKi5vUgpJA1VFoyaGBIpxjdrS_Jucy_r6GBCmNieR8NpTl_UrrSqEqmYa7bBQ6Laf-b8qBhqiYcSyBJz6GjiCWlm8o-NyhFvipmENbfBDU_fSjf-BwoUmmU8D0Wrzy-0RtKEj_-AbpjWqW_GrZWjGSQkDCEbze3ODn8j_iPAo_AuNn5BKT7lqE9DEaK3kO7e74rU6Ku9g4wHpaJHiKM3FYHNBqdM2jH-NAJg5msNvUY8-Rcl65F82natFZtvt8MQBXD3waRbuUgM1pRh_uOA8qo7hltsHSI9Mv1BPhhSOb7kd1JXp_VoCRy_CXbfa-5zJqwA3NWhsRsC3wWmPW-6j6EJh2TSHS9eEHKsL7Dv4bg8j8juFJdCn3k7-m8nMuo61kFXOub2EAhXKtfN7z3IwJxiFnvU0u3jCs5_-Uk3Ln54TnuJbYjvq0VA9R_ip-2inI59AFBnfyVODulye2ZUvAFd0SeuX8VNnPq1e7vATSE4FtrTVtSrlYFlooUlf_Zk",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\":\"The\",\n    \"last_name\":\"Chip\",\n    \"mobile_number\":\"+919977661166\",\n    \"email\":\"thechip911@gmail.com\",\n    \"password\":\"aloksharma\",\n    \"confirm_password\":\"aloksharma\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/accounts/api/v1/user/signup",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"api",
+						"v1",
+						"user",
+						"signup"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "1. SignUP",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQwNTIxMTE5LCJpYXQiOjE2NDA1MTc1MTksImp0aSI6IjQ0YTc5NDIxZDQ1YjQ1NGQ5NTNkMGRjNTVmYjg2NzY3IiwidXNlcl9pZCI6MX0.bkKtB9gH4VPZWNXVEFUlSYRd_WZpvUuc77hRfw8ScSDOaPtm7i60QlHAOIhNqCbN_DWnJzEqtVMCRyeXCdmXYWE3CtLL9Lb6BDL7_knj7O5tBCPuNDKp_BdsMNq0oe0wDaoAsaArZsdGzw9y6XrxGBbAVFEbnhl7HsniTNH7dxsFKi5vUgpJA1VFoyaGBIpxjdrS_Jucy_r6GBCmNieR8NpTl_UrrSqEqmYa7bBQ6Laf-b8qBhqiYcSyBJz6GjiCWlm8o-NyhFvipmENbfBDU_fSjf-BwoUmmU8D0Wrzy-0RtKEj_-AbpjWqW_GrZWjGSQkDCEbze3ODn8j_iPAo_AuNn5BKT7lqE9DEaK3kO7e74rU6Ku9g4wHpaJHiKM3FYHNBqdM2jH-NAJg5msNvUY8-Rcl65F82natFZtvt8MQBXD3waRbuUgM1pRh_uOA8qo7hltsHSI9Mv1BPhhSOb7kd1JXp_VoCRy_CXbfa-5zJqwA3NWhsRsC3wWmPW-6j6EJh2TSHS9eEHKsL7Dv4bg8j8juFJdCn3k7-m8nMuo61kFXOub2EAhXKtfN7z3IwJxiFnvU0u3jCs5_-Uk3Ln54TnuJbYjvq0VA9R_ip-2inI59AFBnfyVODulye2ZUvAFd0SeuX8VNnPq1e7vATSE4FtrTVtSrlYFlooUlf_Zk",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\":\"The\",\n    \"last_name\":\"Chip\",\n    \"mobile_number\":\"+919977661166\",\n    \"email\":\"thechip911@gmail.com\",\n    \"password\":\"aloksharma\",\n    \"confirm_password\":\"aloksharma\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/accounts/api/v1/user/signup",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"api",
+								"v1",
+								"user",
+								"signup"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 16:32:00 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "68"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": \"Account Created Successfully Please Proceed to Login Page\"\n}"
+				}
+			]
+		},
+		{
+			"name": "2. Token Generate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"thechip911@gmail.com\",\n    \"password\":\"aloksharma\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/accounts/api/v1/token",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"api",
+						"v1",
+						"token"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Token Generate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"thechip911@gmail.com\",\n    \"password\":\"aloksharma\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/accounts/api/v1/token/",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"api",
+								"v1",
+								"token",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 28 Dec 2021 02:19:30 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.1"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1763"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0MTUyMTk3MCwiaWF0IjoxNjQwNjU3OTcwLCJqdGkiOiJlYWM1NjFmNDA3ZTI0NDJiYjg1YWI4MTA2YTk0MDExNCIsInVzZXJfaWQiOjF9.FCx4nMYKPnUi5hLdYyq6m_Jwet8CEjOquESr4jwE5ZOU12fSREpythsNpso8r6KRqyYZBL5AI9xo4NOxfTfiqdVApQKwtULcoosBJNJUMAcssoSI7oEEqGhvsnfT9wnNAZeuQG5XxMcqn7ADjUvJ-2EqLLra385tTePw_kODx3HRB5O2o7SydI8ZkQ_9-cTqhD5c6-Iuyge08PGStN9AK-Uq9UWgTX5K-tCZH1QJn6Rnsm1x47UWxHS5KVwdLF1qYz-y3m_U1QACPbfoLLPhNYyZt5Gimph95oSCbBmAH2mS0MtzKVcmb6N0DEq2lvHsoyyyHCHIxDX2Dz6ffMkEEa6DVO5QOqU2Uvq-7BYYvX1PSszTsRsNxMMMGVk8COI3H3UXlz7sGQmPs1bc9kZV-fMZG3fZvf8jdNmXVF6Lm-tEkghcF-0Zb73QM69A75anUuTGJTCK5u-hIsBUpJUzycAT5Elu2lzNVqD8zLyfU2Dt4tHjyiAeLoaGHAECWKu0vqRorawBuKkfRAlzDrAFr2onWE2-qz3nYqPmIU6SYwoWZ-VimC9aLD82sjPol7TFwJW7qxrj_HPFNdvIL_IQmeVxTtBW2C700TMDuv1BQfiuiZeNDNXzTov4GC6gEm4msH9lie1FYM5DkUkUZ43NKwNLdNUz0e7Oi2NSkDMjrBk\",\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQxNTIxOTcwLCJpYXQiOjE2NDA2NTc5NzAsImp0aSI6ImY1ZTU2MzYzOWQ1YzQwMDA4ZGZjMWY3MTMyOWI4ZjUwIiwidXNlcl9pZCI6MX0.UDoI2khSGSabmZv4ricLDUugh1fJsPpQV3pdtEqDKwylRoncN-Heygs1l1Iu9v1rAklFCtsMKN53HolaVIEYM8VAOG4iDpN-ddcF8XcgUAfD0sVktYmFdv-vXvvLdhHZMiEUfTdV61i4uuQ4ehNuaniuAdwkhmSn-NZUm-lUF2zS7Y4h9AGNr9ivMeGffbu4s2OyQOZkf39kWnC0Il1CQ8jAhXs4vTzW1cAjZhgu1Hr4W15WmRh101cxk32zlPvQNeixZyWJWlZBoFUWV9zjg93SWlN6W_toyUo6c8O_eicxZxlumVHnQ8MhxqHifDGjOVKMwNX-IIg8D4tA5tVhGG7PgTSL_61A4MULzxC-KW2rPHrd8v-LuDEDobnTFZgU1jdK5pu88hQy0l2uJj-IxqHnQwGi_16wKqkVUH9j61jafM5yy_MI2JIEF5gaaBJhdzVPkP2m00I1OrF3tGYzJhlzkDSw0fyCq7UfO3vHzqQSJFrKAXFAroXQ3UFNCRnyFGt-hu_pkQTlIzYoAG3g84FLJW9jJvEsvOE4WoZ3YHt9reInDiApvsbfn-ESuAPC0gFFOT5ORKmMdIZxs2Af4eJOnmu1WqtPgIj7bxhlmVSTiEK5mk2Iu911Jtl3chpQk3ZwUvHS6UZOXN1KuI-IkJqeBQ0lJmbRp9TBQCwjvqA\"\n}"
+				}
+			]
+		},
+		{
+			"name": "3.  Login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\":\"The\",\n    \"last_name\":\"Chip\",\n    \"mobile_number\":\"+919977661164\",\n    \"email\":\"thechip914@gmail.com\",\n    \"password\":\"aloksharma\",\n    \"confirm_password\":\"aloksharma\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/accounts/api/v1/user/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"api",
+						"v1",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "3.  Login",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\":\"The\",\n    \"last_name\":\"Chip\",\n    \"mobile_number\":\"+919977661164\",\n    \"email\":\"thechip914@gmail.com\",\n    \"password\":\"aloksharma\",\n    \"confirm_password\":\"aloksharma\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/api/v1/user/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"api",
+								"v1",
+								"user",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 16:44:37 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "223"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"The Chip\",\n        \"first_name\": \"The\",\n        \"last_name\": \"Chip\",\n        \"mobile_number\": \"+919977661166\",\n        \"email\": \"thechip911@gmail.com\",\n        \"profile_picture\": \"http://127.0.0.1:8000/static/accounts/images/default_user_icon.png\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "4. Change Password",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\":\"aloksharmaa\",\n    \"confirm_password\":\"aloksharmaa\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/accounts/api/v1/user/change_password",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"api",
+						"v1",
+						"user",
+						"change_password"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "4. Change Password",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\":\"aloksharmaa\",\n    \"confirm_password\":\"aloksharmaa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/api/v1/user/change_password",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"api",
+								"v1",
+								"user",
+								"change_password"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 17:00:52 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "PATCH, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "27"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": \"Password Changed\"\n}"
+				}
+			]
+		},
+		{
+			"name": "5. Reset Password Mail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"thechip911@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/accounts/api/v1/generate-reset-password",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"api",
+						"v1",
+						"generate-reset-password"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "5. Reset Password Mail",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"thechip911@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/accounts/api/v1/generate-reset-password",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"api",
+								"v1",
+								"generate-reset-password"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 17:07:37 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "60"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": \"Password reset mail send at your registered email\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Generate OTP",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ3NzExNjAwLCJpYXQiOjE2NDY4NDc2MDAsImp0aSI6IjJmN2EwYzkyZTY3ZDQ3ZjU5NzI2MDMwYjFlOTM4NzI0IiwidXNlcl9pZCI6MX0.XrS-i2wMhUYOfMDQA7j2WeaSH-11JffLXljl-gNtHgkO8nBpP6RVDlZUcmAp_2q5klAZDRLTX5vlOi_Vht2HCTyN7x1BWI9uejVo2nP4utcvqAXX2liBooEOLjEOTTq_rBl-kaLOxncG-hZtrbQu4tF_BLQPzYpy76By9TPzXqUDIP17vWrjWyJZhR829BIaKubjyH0vWeABAIHjzKZZMhi9xxc_Jp6MjtoADRKjwmKqR6OwssJ9FNzChHIxfBZxyJzMo2NmQaKHxqIBEIvuFke_H8VkD52Krc68BrxJ0FPAp_gtWWVvD4JtRFmUsmJqOWxeDfZt7ursA4BfYLT8BXkaUmLuwHzWydLfaWI2xdARaJ_wMnHf4Pn0eU_Lapz6WgkQsatPtP0ovgY-IVgYNXBm3Sz-SBsJ_SMRrmB_JQtTrdkWT0bpC4qp3hUmsP8UKocZYESRovC9gbhKM1XxWz3Z5IXjEtVoeTe6f9MsS8xX8949BqG6_Fs3r0MUa324nyu808zu4FOiRwvZeS6fAYVNHLuhxP14iOkV9ydyoVVbi8N2oxll_7qeeDBiW3y1O3XrKwt1KZUltps_AJGDS5EnE8Mfq0xX56hFEDrTpSjzRYaeLQdNSpr1wnVAc9mfM9JU1_WgzEag3B1d9hDevE3Eq9pWcXyXzRoq_QRaS9w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/accounts/api/v1/otp/generate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"api",
+						"v1",
+						"otp",
+						"generate"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Generate OTP",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ3NzExNjAwLCJpYXQiOjE2NDY4NDc2MDAsImp0aSI6IjJmN2EwYzkyZTY3ZDQ3ZjU5NzI2MDMwYjFlOTM4NzI0IiwidXNlcl9pZCI6MX0.XrS-i2wMhUYOfMDQA7j2WeaSH-11JffLXljl-gNtHgkO8nBpP6RVDlZUcmAp_2q5klAZDRLTX5vlOi_Vht2HCTyN7x1BWI9uejVo2nP4utcvqAXX2liBooEOLjEOTTq_rBl-kaLOxncG-hZtrbQu4tF_BLQPzYpy76By9TPzXqUDIP17vWrjWyJZhR829BIaKubjyH0vWeABAIHjzKZZMhi9xxc_Jp6MjtoADRKjwmKqR6OwssJ9FNzChHIxfBZxyJzMo2NmQaKHxqIBEIvuFke_H8VkD52Krc68BrxJ0FPAp_gtWWVvD4JtRFmUsmJqOWxeDfZt7ursA4BfYLT8BXkaUmLuwHzWydLfaWI2xdARaJ_wMnHf4Pn0eU_Lapz6WgkQsatPtP0ovgY-IVgYNXBm3Sz-SBsJ_SMRrmB_JQtTrdkWT0bpC4qp3hUmsP8UKocZYESRovC9gbhKM1XxWz3Z5IXjEtVoeTe6f9MsS8xX8949BqG6_Fs3r0MUa324nyu808zu4FOiRwvZeS6fAYVNHLuhxP14iOkV9ydyoVVbi8N2oxll_7qeeDBiW3y1O3XrKwt1KZUltps_AJGDS5EnE8Mfq0xX56hFEDrTpSjzRYaeLQdNSpr1wnVAc9mfM9JU1_WgzEag3B1d9hDevE3Eq9pWcXyXzRoq_QRaS9w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/api/v1/otp/generate",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"api",
+								"v1",
+								"otp",
+								"generate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 09 Mar 2022 18:01:49 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": \"You OTP is 389015\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Validate OTP",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ3NzExNjAwLCJpYXQiOjE2NDY4NDc2MDAsImp0aSI6IjJmN2EwYzkyZTY3ZDQ3ZjU5NzI2MDMwYjFlOTM4NzI0IiwidXNlcl9pZCI6MX0.XrS-i2wMhUYOfMDQA7j2WeaSH-11JffLXljl-gNtHgkO8nBpP6RVDlZUcmAp_2q5klAZDRLTX5vlOi_Vht2HCTyN7x1BWI9uejVo2nP4utcvqAXX2liBooEOLjEOTTq_rBl-kaLOxncG-hZtrbQu4tF_BLQPzYpy76By9TPzXqUDIP17vWrjWyJZhR829BIaKubjyH0vWeABAIHjzKZZMhi9xxc_Jp6MjtoADRKjwmKqR6OwssJ9FNzChHIxfBZxyJzMo2NmQaKHxqIBEIvuFke_H8VkD52Krc68BrxJ0FPAp_gtWWVvD4JtRFmUsmJqOWxeDfZt7ursA4BfYLT8BXkaUmLuwHzWydLfaWI2xdARaJ_wMnHf4Pn0eU_Lapz6WgkQsatPtP0ovgY-IVgYNXBm3Sz-SBsJ_SMRrmB_JQtTrdkWT0bpC4qp3hUmsP8UKocZYESRovC9gbhKM1XxWz3Z5IXjEtVoeTe6f9MsS8xX8949BqG6_Fs3r0MUa324nyu808zu4FOiRwvZeS6fAYVNHLuhxP14iOkV9ydyoVVbi8N2oxll_7qeeDBiW3y1O3XrKwt1KZUltps_AJGDS5EnE8Mfq0xX56hFEDrTpSjzRYaeLQdNSpr1wnVAc9mfM9JU1_WgzEag3B1d9hDevE3Eq9pWcXyXzRoq_QRaS9w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/accounts/api/v1/otp/validate?otp=389015",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"accounts",
+						"api",
+						"v1",
+						"otp",
+						"validate"
+					],
+					"query": [
+						{
+							"key": "otp",
+							"value": "389015"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Validate OTP",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ3NzExNjAwLCJpYXQiOjE2NDY4NDc2MDAsImp0aSI6IjJmN2EwYzkyZTY3ZDQ3ZjU5NzI2MDMwYjFlOTM4NzI0IiwidXNlcl9pZCI6MX0.XrS-i2wMhUYOfMDQA7j2WeaSH-11JffLXljl-gNtHgkO8nBpP6RVDlZUcmAp_2q5klAZDRLTX5vlOi_Vht2HCTyN7x1BWI9uejVo2nP4utcvqAXX2liBooEOLjEOTTq_rBl-kaLOxncG-hZtrbQu4tF_BLQPzYpy76By9TPzXqUDIP17vWrjWyJZhR829BIaKubjyH0vWeABAIHjzKZZMhi9xxc_Jp6MjtoADRKjwmKqR6OwssJ9FNzChHIxfBZxyJzMo2NmQaKHxqIBEIvuFke_H8VkD52Krc68BrxJ0FPAp_gtWWVvD4JtRFmUsmJqOWxeDfZt7ursA4BfYLT8BXkaUmLuwHzWydLfaWI2xdARaJ_wMnHf4Pn0eU_Lapz6WgkQsatPtP0ovgY-IVgYNXBm3Sz-SBsJ_SMRrmB_JQtTrdkWT0bpC4qp3hUmsP8UKocZYESRovC9gbhKM1XxWz3Z5IXjEtVoeTe6f9MsS8xX8949BqG6_Fs3r0MUa324nyu808zu4FOiRwvZeS6fAYVNHLuhxP14iOkV9ydyoVVbi8N2oxll_7qeeDBiW3y1O3XrKwt1KZUltps_AJGDS5EnE8Mfq0xX56hFEDrTpSjzRYaeLQdNSpr1wnVAc9mfM9JU1_WgzEag3B1d9hDevE3Eq9pWcXyXzRoq_QRaS9w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/api/v1/otp/validate?otp=389015",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"api",
+								"v1",
+								"otp",
+								"validate"
+							],
+							"query": [
+								{
+									"key": "otp",
+									"value": "389015"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 09 Mar 2022 18:02:17 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.2"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "223"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"The Chip\",\n        \"first_name\": \"The\",\n        \"last_name\": \"Chip\",\n        \"mobile_number\": \"+919977661166\",\n        \"email\": \"thechip911@gmail.com\",\n        \"profile_picture\": \"http://127.0.0.1:8000/static/accounts/images/default_user_icon.png\"\n    }\n}"
+				}
+			]
+		}
+	]
+}
